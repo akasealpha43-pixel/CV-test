@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Alpha Harun, Étudiant en Génie Informatique, Développeur Front-End et UI/UX Designer. Découvrez mes projets logiciels, d'analyse de données et d'architecture de bases de données.">
+    <meta name="keywords" content="Alpha Harun, Génie Informatique, Développeur Front-End, UI/UX Designer, Python, SQL, Supabase, Portfolio, Développeur Cameroun">
+    <meta name="author" content="Alpha Harun">
+    <title>Alpha Harun | Portfolio Génie Informatique</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-dot"></div>
+
+    <header>
+        <nav class="nav-container">
+            <a href="#" class="logo">A.HARUN<span class="dot">.</span></a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Accueil</a></li>
+                <li><a href="#about" class="nav-link">À Propos</a></li>
+                <li><a href="#skills" class="nav-link">Compétences</a></li>
+                <li><a href="#projects" class="nav-link">Projets</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#github" class="nav-link">Open Source</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="hero-bg-glow"></div>
+        <div class="hero-container">
+            <div class="hero-text">
+                <h2 class="hero-subtitle" data-aos="fade-down">Futur Ingénieur Logiciel</h2>
+                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">ALPHA HARUN</h1>
+                <p class="hero-dynamic-text"><span id="dynamic-element"></span></p>
+                <div class="hero-cta" data-aos="fade-up" data-aos-delay="400">
+                    <a href="#contact" class="btn btn-primary">Me Contacter <i class="fas fa-paper-plane"></i></a>
+                    <a href="#" class="btn btn-secondary">Télécharger le CV <i class="fas fa-download"></i></a>
+                </div>
+            </div>
+            <div class="hero-visual" data-aos="zoom-in" data-aos-delay="300">
+                <div class="profile-frame">
+                    <div class="profile-placeholder">
+                        <i class="fas fa-user-astronaut-brands fas fa-code fa-4x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Parcours & Vision</h2>
+            <div class="about-grid">
+                <div class="about-bio" data-aos="fade-right">
+                    <h3>Passionné par l'architecture logicielle</h3>
+                    <p>Étudiant passionné en Génie Informatique, je combine une solide rigueur mathématique et logique à une sensibilité créative poussée pour le design d'interfaces. Mon but est de concevoir des systèmes applicatifs robustes, évolutifs et centrés sur l'expérience utilisateur.</p>
+                    <div class="stats-container">
+                        <div class="stat-box">
+                            <span class="counter" data-target="15">0</span><span>+</span>
+                            <p>Projets Conçus</p>
+                        </div>
+                        <div class="stat-box">
+                            <span class="counter" data-target="98">0</span><span>%</span>
+                            <p>Précision UI/UX</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-timeline" data-aos="fade-left">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2024 - Présent</div>
+                        <h4>Formation Ingénieur de Spécialité</h4>
+                        <p>Génie Informatique - Spécifications logicielles, structures de données complexes et administration système.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2025</div>
+                        <h4>Focus Data & Cloud Stack</h4>
+                        <p>Immersion poussée dans l'écosystème Python (NetworkX, Matplotlib) et intégrations Backend-as-a-Service avec Supabase.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Matrice des Compétences</h2>
+            <div class="skills-grid">
+                <div class="skill-card" data-aos="flip-left">
+                    <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Développement Web</h3>
+                    <div class="skill-bars">
+                        <div class="bar-item"><span>HTML5 / CSS3</span><div class="progress-line" data-progress="95%"><span></span></div></div>
+                        <div class="bar-item"><span>JavaScript ES6</span><div class="progress-line" data-progress="85%"><span></span></div></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-aos="flip-left" data-aos-delay="100">
+                    <div class="card-icon"><i class="fas fa-bezier-curve"></i></div>
+                    <h3>Design & UI/UX</h3>
+                    <div class="skill-bars">
+                        <div class="bar-item"><span>Figma Maquetage</span><div class="progress-line" data-progress="90%"><span></span></div></div>
+                        <div class="bar-item"><span>Responsive Design</span><div class="progress-line" data-progress="95%"><span></span></div></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-aos="flip-left" data-aos-delay="200">
+                    <div class="card-icon"><i class="fas fa-database"></i></div>
+                    <h3>Bases de Données</h3>
+                    <div class="skill-bars">
+                        <div class="bar-item"><span>SQL Relat.</span><div class="progress-line" data-progress="85%"><span></span></div></div>
+                        <div class="bar-item"><span>Supabase Infrastructure</span><div class="progress-line" data-progress="80%"><span></span></div></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-aos="flip-left" data-aos-delay="300">
+                    <div class="card-icon"><i class="fab fa-python"></i></div>
+                    <h3>Programmation</h3>
+                    <div class="skill-bars">
+                        <div class="bar-item"><span>Python & Analytics</span><div class="progress-line" data-progress="80%"><span></span></div></div>
+                        <div class="bar-item"><span>Git & Architecture</span><div class="progress-line" data-progress="85%"><span></span></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Galerie de Réalisations</h2>
+            <div class="projects-grid">
+                <article class="project-card" data-aos="fade-up">
+                    <div class="project-img-wrapper">
+                        <div class="img-placeholder"><i class="fas fa-utensils fa-3x"></i></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Smart Canteen Platform</h3>
+                        <p>Système complet de gestion de restauration d'entreprise avec intégration de cartes d'accès intelligentes, traitement analytique des stocks et authentification centralisée.</p>
+                        <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>JS ES6</span><span>Supabase</span></div>
+                        <div class="project-actions">
+                            <a href="#" class="action-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="action-btn source"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-img-wrapper">
+                        <div class="img-placeholder"><i class="fas fa-running fa-3x"></i></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Football Analytics Engine</h3>
+                        <p>Application logicielle d'analyse décisionnelle sportive. Permet l'ingestion de flux de performances d'athlètes et génère des modèles prédictifs complexes.</p>
+                        <div class="project-tags"><span>Python</span><span>SQL</span><span>Supabase</span></div>
+                        <div class="project-actions">
+                            <a href="#" class="action-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="action-btn source"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-img-wrapper">
+                        <div class="img-placeholder"><i class="fas fa-project-diagram fa-3x"></i></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Pass Network Analyzer</h3>
+                        <p>Outil d'analyse graphique et de cartographie de passes. Modélisation mathématique des interactions d'équipe basée sur des structures de données graphes complexes.</p>
+                        <div class="project-tags"><span>Python</span><span>Data Analytics</span><span>NetworkX</span></div>
+                        <div class="project-actions">
+                            <a href="#" class="action-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="action-btn source"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-img-wrapper">
+                        <div class="img-placeholder"><i class="fas fa-calculator fa-3x"></i></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Scientific Calculator Engine</h3>
+                        <p>Moteur d'application de calcul scientifique complet doté d'une interface utilisateur fluide et d'un parseur d'expressions mathématiques récursives.</p>
+                        <div class="project-tags"><span>Python</span><span>UI Design</span></div>
+                        <div class="project-actions">
+                            <a href="#" class="action-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="action-btn source"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Offre de Services</h2>
+            <div class="services-grid">
+                <div class="service-box" data-aos="fade-up">
+                    <i class="fas fa-code"></i>
+                    <h3>Développement Front-End</h3>
+                    <p>Déploiement d'interfaces complexes pixel-perfect respectant les standards du Web moderne.</p>
+                </div>
+                <div class="service-box" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-pencil-ruler"></i>
+                    <h3>UI/UX Architecture</h3>
+                    <p>Conception de parcours fonctionnels optimisés et création de prototypes interactifs haut de gamme sous Figma.</p>
+                </div>
+                <div class="service-box" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-chart-network"></i>
+                    <h3>Tableaux de Bord Dynamiques</h3>
+                    <p>Visualisation de flux de données métiers et implémentation de pipelines d'analyses descriptives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="github" class="github-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Activité Open Source</h2>
+            <div class="github-wrapper" data-aos="zoom-in">
+                <div id="github-profile" class="github-card">
+                    <p class="loading-text">Synchronisation en cours avec l'API GitHub...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Recommandations</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-right">
+                    <p class="quote">"Alpha fait preuve d'une compréhension technique remarquable pour son niveau académique. Son implication sur l'architecture de la base Supabase pour notre application de gestion a été déterminante."</p>
+                    <div class="author-info">
+                        <strong>Dr. Jean-Marc Dupont</strong>
+                        <span>Responsable Pôle Recherche & Développement</span>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-left" data-aos-delay="100">
+                    <p class="quote">"La précision de son intégration UI et son autonomie sur le framework de traitement d'analyses sportives démontrent un profil d'ingénieur d'avenir très prometteur."</p>
+                    <div class="author-info">
+                        <strong>S. Kamga</strong>
+                        <span>Architecte Solutions Logicielles Principal</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Lancer une Collaboration</h2>
+            <div class="contact-grid">
+                <div class="contact-meta" data-aos="fade-right">
+                    <h3>Restons connectés</h3>
+                    <p>Ouvert aux opportunités d'alternance, de stages de fin d'études ainsi qu'aux contributions open-source stratégiques.</p>
+                    <div class="social-channels">
+                        <a href="#" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:alpha.harun@example.com" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper" data-aos="fade-left">
+                    <form id="portfolio-form" class="cyber-form" novalidate>
+                        <div class="input-group">
+                            <input type="text" id="name" required placeholder=" ">
+                            <label for="name">Votre Identité / Entreprise</label>
+                            <span class="error-msg">Ce champ est requis.</span>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" id="email" required placeholder=" ">
+                            <label for="email">Adresse Électronique</label>
+                            <span class="error-msg">Adresse email non valide.</span>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="subject" required placeholder=" ">
+                            <label for="subject">Objet de la Demande</label>
+                            <span class="error-msg">Ce champ est requis.</span>
+                        </div>
+                        <div class="input-group">
+                            <textarea id="message" required placeholder=" " rows="5"></textarea>
+                            <label for="message">Description de votre Projet</label>
+                            <span class="error-msg">Le message ne peut être vide.</span>
+                        </div>
+                        <button type="submit" class="btn btn-primary submit-btn">Transmettre l'envoi <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <div id="form-success" class="success-banner">Requête transmise avec succès !</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 ALPHA HARUN — Tous droits réservés.</p>
+            <p class="footer-tech">Construit nativement en HTML5, CSS3 Grid & ES6 Engine.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="style.js"></script>
+</body>
+</html>
