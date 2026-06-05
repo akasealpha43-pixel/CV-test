@@ -1,166 +1,383 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // 1. SUPPRESSION DU LOADER ( PERFORMANCE METRIC )
-    const loader = document.getElementById("loader");
-    window.addEventListener("load", () => {
-        loader.style.opacity = "0";
-        setTimeout(() => loader.style.visibility = "hidden", 500);
-        // Activation de la ligne de progression des compétences après le chargement
-        triggerSkillAnimations();
-    });
 
-    // 2. INITIALISATION ET CONFIGURATION DU CURSEUR LOGICIEL
+    /* ==========================================
+       1. LOADER
+    ========================================== */
+
+    const loader = document.getElementById("loader");
+
+    if (loader) {
+        window.addEventListener("load", () => {
+            loader.style.opacity = "0";
+
+            setTimeout(() => {
+                loader.style.visibility = "hidden";
+            }, 500);
+        });
+    }
+
+    /* ==========================================
+       2. CURSEUR PERSONNALISÉ
+    ========================================== */
+
     const cursor = document.querySelector(".custom-cursor");
     const cursorDot = document.querySelector(".custom-cursor-dot");
-    
-    document.addEventListener("mousemove", (e) => {
-        cursor.style.left = e.clientX + "px";
-        cursor.style.top = e.clientY + "px";
-        cursorDot.style.left = e.clientX + "px";
-        cursorDot.style.top = e.clientY + "px";
-    });
 
-    // 3. GESTION DU MENU MOBILE (HAMBURGER ACTION)
+    if (cursor && cursorDot && window.innerWidth > 768) {
+
+        document.addEventListener("mousemove", (e) => {
+
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+
+            cursorDot.style.left = `${e.clientX}px`;
+            cursorDot.style.top = `${e.clientY}px`;
+
+        });
+
+    }
+
+    /* ==========================================
+       3. MENU MOBILE
+    ========================================== */
+
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav-menu");
     const navLinks = document.querySelectorAll(".nav-link");
 
-    hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        navMenu.classList.toggle("active");
+    if (hamburger && navMenu) {
+
+        hamburger.addEventListener("click", () => {
+
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+
+        });
+
+        navLinks.forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                hamburger.classList.remove("active");
+                navMenu.classList.remove("active");
+
+            });
+
+        });
+
+    }
+
+    /* ==========================================
+       4. HEADER DYNAMIQUE
+    ========================================== */
+
+    const header = document.querySelector("header");
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 50) {
+
+            header.classList.add("scrolled");
+
+        } else {
+
+            header.classList.remove("scrolled");
+
+        }
+
     });
 
-    navLinks.forEach(link => link.addEventListener("click", () => {
-        hamburger.classList.remove("active");
-        navMenu.classList.remove("active");
-    }));
+    /* ==========================================
+       5. TEXTE DYNAMIQUE HERO
+    ========================================== */
 
-    // 4. ANIMATION DE TEXTE DYNAMIQUE (HERO SECTION)
     const dynamicElement = document.getElementById("dynamic-element");
-    const phrases = [
-        "Étudiant en Génie Informatique",
-        "Développeur Front-End",
-        "UI/UX Designer"
-    ];
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
 
-    function typeEngine() {
-        const currentPhrase = phrases[phraseIndex];
-        if (isDeleting) {
-            dynamicElement.textContent = currentPhrase.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            dynamicElement.textContent = currentPhrase.substring(0, charIndex + 1);
-            charIndex++;
+    if (dynamicElement) {
+
+        const phrases = [
+            "Étudiant en Génie Informatique",
+            "Développeur Front-End",
+            "UI/UX Designer",
+            "Développeur Python",
+            "Architecte de Bases de Données"
+        ];
+
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEngine() {
+
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isDeleting) {
+
+                dynamicElement.textContent =
+                    currentPhrase.substring(0, charIndex - 1);
+
+                charIndex--;
+
+            } else {
+
+                dynamicElement.textContent =
+                    currentPhrase.substring(0, charIndex + 1);
+
+                charIndex++;
+
+            }
+
+            let speed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+
+                speed = 2000;
+                isDeleting = true;
+
+            } else if (isDeleting && charIndex === 0) {
+
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                speed = 500;
+
+            }
+
+            setTimeout(typeEngine, speed);
+
         }
 
-        let typeSpeed = isDeleting ? 50 : 100;
+        typeEngine();
 
-        if (!isDeleting && charIndex === currentPhrase.length) {
-            typeSpeed = 2000; // Pause à la fin du mot
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            typeSpeed = 500; // Pause avant de retaper
-        }
-
-        setTimeout(typeEngine, typeSpeed);
     }
-    typeEngine();
 
-    // 5. ANIMATION DES COMPÉTENCES ET BARRES DE PROGRESSION
+    /* ==========================================
+       6. BARRES DE COMPÉTENCES
+    ========================================== */
+
     function triggerSkillAnimations() {
-        const progressLines = document.querySelectorAll(".progress-line span");
+
+        const progressLines =
+            document.querySelectorAll(".progress-line span");
+
         progressLines.forEach(line => {
-            const parent = line.parentElement;
-            const targetWidth = parent.getAttribute("data-progress");
+
+            const targetWidth =
+                line.parentElement.getAttribute("data-progress");
+
             line.style.width = targetWidth;
+
         });
+
     }
 
-    // 6. SYNCHRONISATION ASYNCHRONE AVEC L'API GITHUB
-    // Note : Utilisation d'un profil générique de simulation pour ALPHA HARUN
-    async function fetchGitHubStats() {
-        const targetContainer = document.getElementById("github-profile");
-        try {
-            // Remplacer 'octocat' par ton identifiant GitHub réel pour l'intégration finale
-            const response = await fetch("https://api.github.com/users/octocat");
-            if (!response.ok) throw new Error("Ressource indisponible");
-            const data = await response.json();
-            
-            targetContainer.innerHTML = `
-                <img src="${data.avatar_url}" alt="Alpha Harun Profile" class="gh-avatar">
-                <h3>@${data.login} on GitHub</h3>
-                <p>${data.bio || "Développeur & Concepteur logiciel en Génie Informatique"}</p>
-                <div class="gh-meta-grid">
-                    <div><strong>${data.public_repos}</strong><p>Dépôts Publics</p></div>
-                    <div><strong>${data.followers}</strong><p>Abonnés</p></div>
-                </div>
-                <a href="${data.html_url}" target="_blank" class="btn btn-secondary" style="margin-top:20px; width:100%; justify-content:center;">Visiter le Profil Absolu</a>
-            `;
-        } catch (error) {
-            targetContainer.innerHTML = `
-                <i class="fab fa-github fa-3x" style="color:var(--accent-blue); margin-bottom:15px;"></i>
-                <h3>Écosystème Git Localisé</h3>
-                <p>Données GitHub hors-ligne. Consultez mon espace de code partagé en direct.</p>
-                <a href="https://github.com" target="_blank" class="btn btn-primary" style="margin-top:20px;">Accéder à GitHub</a>
-            `;
-        }
+    const skillsSection = document.querySelector("#skills");
+
+    if (skillsSection) {
+
+        const observer = new IntersectionObserver((entries) => {
+
+            if (entries[0].isIntersecting) {
+
+                triggerSkillAnimations();
+
+            }
+
+        });
+
+        observer.observe(skillsSection);
+
     }
+
+    /* ==========================================
+       7. GITHUB API
+    ========================================== */
+
+    async function fetchGitHubStats() {
+
+        const targetContainer =
+            document.getElementById("github-profile");
+
+        if (!targetContainer) return;
+
+        try {
+
+            const response = await fetch(
+                "https://api.github.com/users/akasealpha43-pixel"
+            );
+
+            if (!response.ok)
+                throw new Error("GitHub indisponible");
+
+            const data = await response.json();
+
+            targetContainer.innerHTML = `
+                <img src="${data.avatar_url}" 
+                     alt="GitHub Profile" 
+                     class="gh-avatar">
+
+                <h3>@${data.login}</h3>
+
+                <p>
+                    ${data.bio || "Développeur Full Stack & UI Designer"}
+                </p>
+
+                <div class="gh-meta-grid">
+
+                    <div>
+                        <strong>${data.public_repos}</strong>
+                        <p>Repositories</p>
+                    </div>
+
+                    <div>
+                        <strong>${data.followers}</strong>
+                        <p>Followers</p>
+                    </div>
+
+                </div>
+
+                <a href="${data.html_url}"
+                   target="_blank"
+                   class="btn btn-secondary"
+                   style="margin-top:20px;width:100%;justify-content:center;">
+                   Voir mon GitHub
+                </a>
+            `;
+
+        } catch (error) {
+
+            targetContainer.innerHTML = `
+                <i class="fab fa-github fa-3x"
+                   style="color:var(--accent-blue);margin-bottom:20px;">
+                </i>
+
+                <h3>GitHub Indisponible</h3>
+
+                <p>
+                    Impossible de charger les statistiques GitHub.
+                </p>
+
+                <a href="https://github.com/akasealpha43-pixel"
+                   target="_blank"
+                   class="btn btn-primary"
+                   style="margin-top:20px;">
+                   Visiter GitHub
+                </a>
+            `;
+
+        }
+
+    }
+
     fetchGitHubStats();
 
-    // 7. MOTEUR DE VALIDATION DU FORMULAIRE DE CONTACT
+    /* ==========================================
+       8. FORMULAIRE
+    ========================================== */
+
     const form = document.getElementById("portfolio-form");
     const successBanner = document.getElementById("form-success");
 
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        let isFormValid = true;
+    if (form) {
 
-        const inputs = form.querySelectorAll("input, textarea");
-        
-        inputs.forEach(input => {
-            const group = input.parentElement;
-            if (!input.value.trim()) {
-                group.classList.add("invalid");
-                isFormValid = false;
-            } else if (input.type === "email" && !validateEmail(input.value)) {
-                group.classList.add("invalid");
-                isFormValid = false;
-            } else {
-                group.classList.remove("invalid");
+        form.addEventListener("submit", (e) => {
+
+            e.preventDefault();
+
+            let isValid = true;
+
+            const fields =
+                form.querySelectorAll("input, textarea");
+
+            fields.forEach(field => {
+
+                const group = field.parentElement;
+
+                if (!field.value.trim()) {
+
+                    group.classList.add("invalid");
+                    isValid = false;
+
+                } else if (
+                    field.type === "email" &&
+                    !validateEmail(field.value)
+                ) {
+
+                    group.classList.add("invalid");
+                    isValid = false;
+
+                } else {
+
+                    group.classList.remove("invalid");
+
+                }
+
+            });
+
+            if (isValid) {
+
+                form.reset();
+
+                successBanner.style.display = "block";
+
+                setTimeout(() => {
+
+                    successBanner.style.display = "none";
+
+                }, 5000);
+
             }
+
         });
 
-        if (isFormValid) {
-            form.style.display = "none";
-            successBanner.style.display = "block";
-            // L'intégration du service d'envoi (ex: FormSpree ou Supabase edge functions) s'insère ici.
-        }
-    });
+        form.querySelectorAll("input, textarea")
+            .forEach(field => {
 
-    function validateEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(String(email).toLowerCase());
+                field.addEventListener("input", () => {
+
+                    field.parentElement
+                        .classList.remove("invalid");
+
+                });
+
+            });
+
     }
 
-    // Suppression des classes d'erreur lors de la saisie utilisateur
-    form.querySelectorAll("input, textarea").forEach(element => {
-        element.addEventListener("input", () => {
-            if (element.value.trim()) {
-                element.parentElement.classList.remove("invalid");
-            }
-        });
-    });
+    function validateEmail(email) {
 
-    // 8. INITIALISATION DU MODULE AOS (ANIMATION ON SCROLL)
-    AOS.init({
-        duration: 800,
-        easing: 'ease-out-cubic',
-        once: true,
-        mirror: false
-    });
+        const regex =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        return regex.test(email);
+
+    }
+
+    /* ==========================================
+       9. ANNÉE AUTOMATIQUE
+    ========================================== */
+
+    const yearElement = document.getElementById("year");
+
+    if (yearElement) {
+
+        yearElement.textContent =
+            new Date().getFullYear();
+
+    }
+
+    /* ==========================================
+       10. AOS
+    ========================================== */
+
+    if (typeof AOS !== "undefined") {
+
+        AOS.init({
+            duration: 800,
+            easing: "ease-out-cubic",
+            once: true,
+            mirror: false
+        });
+
+    }
+
 });
