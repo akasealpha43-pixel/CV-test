@@ -30,6 +30,7 @@ html {
 
 body {
     overflow-x: hidden;
+    width: 100%;
 }
 
 .container {
@@ -75,7 +76,7 @@ body {
 }
 
 /* ==========================================================================
-   NAVIGATION STYLE (GLASSMORPHISM)
+   NAVIGATION STYLE (GLASSMORPHISM) - ORDINATEUR PAR DÉFAUT
    ========================================================================== */
 header {
     position: fixed;
@@ -104,28 +105,36 @@ header {
 .bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: var(--text-primary); transition: 0.3s; }
 
 /* ==========================================================================
-   HERO SECTION DESIGN
+   HERO SECTION DESIGN - ORDINATEUR PAR DÉFAUT
    ========================================================================== */
 .hero-section {
-    position: relative; height: 100vh; display: flex; align-items: center;
+    position: relative; 
+    min-height: 100vh; 
+    display: flex; 
+    align-items: center;
     background: radial-gradient(circle at 80% 20%, rgba(125, 60, 255, 0.15), transparent 50%);
     padding-top: 80px;
 }
 .hero-container {
     display: grid; grid-template-columns: 1fr 1fr; align-items: center;
     max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%;
+    gap: 40px;
 }
 .hero-subtitle {
     color: var(--accent-blue); font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;
 }
-.hero-title { font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 15px; }
+.hero-title { 
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Taille fluide s'adaptant à l'écran */
+    font-weight: 800; line-height: 1.1; margin-bottom: 15px; 
+}
 .hero-dynamic-text { font-size: 1.5rem; color: var(--text-secondary); margin-bottom: 35px; height: 40px; }
-.hero-cta { display: flex; gap: 20px; }
+.hero-cta { display: flex; gap: 20px; flex-wrap: wrap; }
 
 /* Buttons Custom Styles */
 .btn {
     padding: 14px 28px; border-radius: 8px; font-weight: 600; text-decoration: none;
     display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s ease;
+    white-space: nowrap;
 }
 .btn-primary { background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple)); color: white; }
 .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 168, 255, 0.3); }
@@ -133,14 +142,18 @@ header {
 .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
 
 .profile-frame {
-    width: 320px; height: 320px; margin: 0 auto;
+    width: min(320px, 100%); 
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
     background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     animation: morphing 10s infinite alternate;
     display: flex; justify-content: center; align-items: center;
 }
 .profile-placeholder {
-    width: 310px; height: 310px; background-color: var(--bg-dark);
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    background-color: var(--bg-dark);
     border-radius: inherit; display: flex; justify-content: center; align-items: center;
     color: var(--accent-blue);
 }
@@ -153,12 +166,12 @@ header {
    SECTIONS STANDARD & GRID INTERFACE
    ========================================================================== */
 .section-title {
-    font-size: 2.5rem; font-weight: 800; text-align: center; margin-bottom: 60px;
+    font-size: clamp(2rem, 4vw, 2.5rem); font-weight: 800; text-align: center; margin-bottom: 60px;
     background: linear-gradient(to right, #FFF, #94A3B8); 
     background-clip: text;-webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 .about-section, .skills-section, .projects-section, .services-section, .github-section, .testimonials-section, .contact-section {
-    padding: 100px 0; border-bottom: 1px solid var(--border-glass);
+    padding: clamp(60px, 8vw, 100px) 0; border-bottom: 1px solid var(--border-glass);
 }
 
 /* About Layout */
@@ -174,8 +187,8 @@ header {
 .timeline-dot { position: absolute; left: -41px; top: 5px; width: 20px; height: 20px; background-color: var(--accent-purple); border-radius: 50%; border: 4px solid var(--bg-dark); }
 .timeline-date { color: var(--accent-blue); font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; }
 
-/* Skills Grid */
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+/* Skills Grid responsive avec auto-fit */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
 .skill-card {
     background: var(--bg-surface); backdrop-filter: blur(12px); padding: 30px; border-radius: 12px;
     border: 1px solid var(--border-glass); transition: transform 0.3s;
@@ -187,8 +200,8 @@ header {
 .progress-line { width: 100%; height: 6px; background-color: rgba(255,255,255,0.05); border-radius: 10px; margin-top: 5px; position: relative; }
 .progress-line span { display: block; height: 100%; background: linear-gradient(to right, var(--accent-blue), var(--accent-purple)); border-radius: 10px; width: 0; transition: width 1s cubic-bezier(1,0,0,1); }
 
-/* Projects Grid */
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+/* Projects Grid responsive avec auto-fit */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 .project-card {
     background: var(--bg-surface); border-radius: 16px; border: 1px solid var(--border-glass);
     overflow: hidden; backdrop-filter: blur(12px); transition: all 0.3s;
@@ -204,8 +217,8 @@ header {
 .action-btn { text-decoration: none; color: var(--text-primary); font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 5px; }
 .action-btn.source { color: var(--text-secondary); }
 
-/* Services Layout */
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+/* Services Layout responsive avec auto-fit */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
 .service-box { background: var(--bg-surface); border: 1px solid var(--border-glass); border-radius: 12px; padding: 40px 30px; text-align: center; }
 .service-box i { font-size: 2.5rem; color: var(--accent-purple); margin-bottom: 20px; }
 .service-box h3 { margin-bottom: 15px; }
@@ -265,29 +278,66 @@ footer { padding: 40px 0; background: #050505; border-top: 1px solid var(--borde
 .footer-tech { font-size: 0.8rem; color: rgba(255,255,255,0.2); }
 
 /* ==========================================================================
-   MEDIA QUERIES (ADAPTATION RESPONSIVE SYSTEM)
+   MEDIA QUERIES (ADAPTATION RESPONSIVE SYSTEM) - TABLETTES & ÉCRANS INTERMÉDIAIRES
    ========================================================================== */
 @media (max-width: 1024px) {
     html { font-size: 15px; }
-    .hero-title { font-size: 3rem; }
-    .contact-grid, .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-container { gap: 30px; }
+    .contact-grid, .about-grid { grid-template-columns: 1fr; gap: 45px; }
 }
 
+/* ==========================================================================
+   MEDIA QUERIES (ADAPTATION RESPONSIVE SYSTEM) - MOBILES / TÉLÉPHONES
+   ========================================================================== */
 @media (max-width: 768px) {
-    .custom-cursor, .custom-cursor-dot { display: none !important; * { cursor: auto !important; } }
+    /* Désactivation du curseur pour les écrans tactiles */
+    .custom-cursor, .custom-cursor-dot { display: none !important; }
+    * { cursor: auto !important; }
+    
+    /* Titres & Sections Réduits */
+    .section-title { margin-bottom: 40px; }
+    .about-section, .skills-section, .projects-section, .services-section, .github-section, .testimonials-section, .contact-section {
+        padding: 60px 0;
+    }
+
+    /* Activation du Menu Hamburger Mobile */
     .hamburger { display: block; }
     .hamburger.active .bar:nth-child(2) { opacity: 0; }
     .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    
     .nav-menu {
         position: fixed; left: -100%; top: 70px; gap: 0; flex-direction: column;
-        background-color: var(--bg-dark); width: 100%; text-align: center; transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.5); border-bottom: 1px solid var(--border-glass);
+        background-color: rgba(10, 10, 10, 0.96); backdrop-filter: blur(20px); 
+        width: 100%; height: calc(100vh - 70px); text-align: center; transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.5); border-top: 1px solid var(--border-glass);
+        justify-content: center;
     }
     .nav-menu.active { left: 0; }
-    .nav-item { margin: 2.5rem 0; }
-    .hero-container { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-    .hero-cta { justify-content: center; }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .footer-content { flex-direction: column; gap: 15px; text-align: center; }
+    .nav-item { margin: 2rem 0; }
+    .nav-link { font-size: 1.2rem; }
+
+    /* Redirection Flex/Grid Verticale Unique pour Écran Étroit */
+    .hero-container { grid-template-columns: 1fr; text-align: center; gap: 50px; }
+    .hero-cta { justify-content: center; flex-direction: column; width: 100%; }
+    .btn { width: 100%; justify-content: center; }
+    
+    /* Gestion Image Portrait sur téléphone */
+    .profile-frame {
+        width: 240px;
+        order: -1; /* Remonte le portrait au-dessus du texte de présentation */
+    }
+    
+    /* Ajustement À Propos & Blocs de Statistiques */
+    .stats-container { flex-direction: column; gap: 20px; align-items: center; }
+    .about-timeline { padding-left: 20px; }
+    .timeline-dot { left: -31px; }
+
+    /* Forcer une seule colonne sur téléphone pour les grilles complexes */
+    .skills-grid, .projects-grid, .services-grid { grid-template-columns: 1fr; gap: 20px; }
+    .gh-meta-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    
+    /* Formulaire & Footer */
+    .social-channels { justify-content: center; }
+    .footer-content { flex-direction: column; gap: 20px; text-align: center; }
 }
