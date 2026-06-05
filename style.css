@@ -1,7 +1,12 @@
 /* ==========================================================================
    RESET & CONFIGURATION DES VARIABLES GLOBALES
    ========================================================================== */
-:root {
+header.scrolled{
+    background: rgba(10,10,10,.95);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 5px 25px rgba(0,0,0,.4);
+}
+   :root {
     --bg-dark: #0A0A0A;
     --bg-surface: rgba(20, 20, 20, 0.6);
     --accent-blue: #00A8FF;
